@@ -12,6 +12,7 @@ import Command from './pages/Command'
 import Career from './pages/Career'
 import Ai from './pages/Ai'
 import Extension from './pages/Extention'
+import GitCommand from './pages/GitCommand'
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
       <Route path='/career' element={<Career />} />
       <Route path='/ai' element={<Ai />} />
       <Route path="/extention" element={<Extension />} />
+      <Route path='/git-command' element={<GitCommand />} />
 
       
     </Routes>

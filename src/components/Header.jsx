@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   return (
     <header className="bg-white shadow-md">
@@ -19,12 +24,39 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">Home</Link>
             <Link to="/ui" className="text-gray-600 hover:text-blue-600 transition-colors">UI</Link>
-            {/* <Link to="/about" className="text-gray-600 hover:text-blue-600 transition-colors">About</Link> */}
             <Link to="/reactui" className="text-gray-600 hover:text-blue-600 transition-colors">React UI</Link>
-            <Link to="/Command" className="text-gray-600 hover:text-blue-600 transition-colors">Command</Link>
+            
+            {/* Dropdown Menu for Command */}
+            <div className="relative">
+              <button
+                onClick={toggleDropdown}
+                className="text-gray-600 hover:text-blue-600 transition-colors focus:outline-none"
+              >
+                Command
+              </button>
+              {isDropdownOpen && (
+                <div className="absolute bg-white shadow-md rounded-lg mt-2 w-48">
+                  <Link
+                    to="/command"
+                    className="block px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-100 transition-colors whitespace-nowrap"
+                    onClick={() => setIsDropdownOpen(false)}
+                  >
+                    Common Command
+                  </Link>
+                  <Link
+                    to="/git-command"
+                    className="block px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-100 transition-colors whitespace-nowrap"
+                    onClick={() => setIsDropdownOpen(false)}
+                  >
+                    Git Command
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <Link to="/career" className="text-gray-600 hover:text-blue-600 transition-colors">Career</Link>
-            <Link to="/ai" className="text-gray-600 hover:text-blue-600 transition-colors">Ai</Link>
-            <Link to="/extention" className="text-gray-600 hover:text-blue-600 transition-colors">Extention</Link>
+            <Link to="/ai" className="text-gray-600 hover:text-blue-600 transition-colors">AI</Link>
+            <Link to="/extention" className="text-gray-600 hover:text-blue-600 transition-colors">Extension</Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -69,55 +101,75 @@ const Header = () => {
               >
                 UI
               </Link>
-              {/* <Link 
-                to="/about" 
+              <Link 
+                to="/reactui" 
                 className="text-gray-600 hover:text-blue-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About
-              </Link> */}
-              <Link
-               to="/reackui"
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-              >
-              Reack Ui
-              </Link>
-              <Link
-               to="/command"
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-              >
-              Command
-              </Link>
-              <Link
-               to="/career"
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-              >
-              Career
-              </Link>
-              <Link
-               to="/ai"
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-              >
-              Ai
-              </Link>
-              <Link
-               to="/extention"
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-              >
-              Extention
+                React UI
               </Link>
 
+              {/* Dropdown Menu for Command in Mobile */}
+              <div>
+                <button
+                  onClick={toggleDropdown}
+                  className="text-gray-600 hover:text-blue-600 transition-colors focus:outline-none"
+                >
+                  Command
+                </button>
+                {isDropdownOpen && (
+                  <div className="mt-2 space-y-2">
+                    <Link
+                      to="/command"
+                      className="block text-gray-600 hover:text-blue-600 transition-colors whitespace-nowrap"
+                      onClick={() => {
+                        setIsDropdownOpen(false);
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      Common Command
+                    </Link>
+                    <Link
+                      to="/git-command"
+                      className="block text-gray-600 hover:text-blue-600 transition-colors whitespace-nowrap"
+                      onClick={() => {
+                        setIsDropdownOpen(false);
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      Git Command
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <Link
+                to="/career"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Career
+              </Link>
+              <Link
+                to="/ai"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                AI
+              </Link>
+              <Link
+                to="/extention"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Extension
+              </Link>
             </div>
           </div>
         )}
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
