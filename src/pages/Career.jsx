@@ -71,6 +71,79 @@ const Career = () => {
     })
   }
 
+  const interviewPrep = [
+      {
+      id:1,
+      website: 'interviewing.io',
+      title: 'Mock Technical Interviews',
+      description: 'Practice coding interviews with real engineers from top tech companies. Get **instant feedback** and improve your skills.',
+      link: 'https://interviewing.io',
+    },
+    {
+      id: 2,
+      website: 'leetcode.com',
+      title: 'LeetCode',
+      description: 'The go-to platform for practicing coding problems and preparing for technical interviews. Offers a wide range of problems across various difficulty levels.',
+      link: 'https://leetcode.com',
+    },
+    {
+      id: 3,
+      website: 'pramp.com',
+      title: 'Pramp',
+      description: 'A peer-to-peer platform for practicing coding interviews with other developers. Offers live coding sessions and feedback.',
+      link: 'https://www.pramp.com',
+    },
+    {
+      id: 4,
+      website: 'exponent.com',
+      title: 'Exponent',
+      description: 'Provides resources and mock interviews for technical and behavioral interviews. Focuses on both coding and system design interviews.',
+      link: 'https://www.exponent.com',
+    },
+    {
+      id: 5,
+      website: 'hired.com',
+      title: 'Hired',
+      description: 'A job marketplace that connects developers with companies. Offers resources for interview preparation and salary negotiation.',
+      link: 'https://hired.com',
+    },
+    {
+      id: 6,
+      website: 'interviewcake.com',
+      title: 'Interview Cake',
+      description: 'Offers coding interview practice problems with detailed solutions and explanations. Focuses on algorithmic thinking and problem-solving skills.',
+      link: 'https://www.interviewcake.com',
+    },
+    {
+      id: 7,
+      website: 'exercism.org',
+      title: 'Exercism',
+      description: 'A platform for practicing coding problems in various programming languages. Offers mentorship and code reviews to help improve your skills.',
+      link: 'https://exercism.org',
+    },
+    {
+      id: 8,
+      website: 'github.com/sudheerj/javascript-interview-questions',
+      title: 'JavaScript Interview Questions & Answers',
+      description: 'A comprehensive collection of JavaScript interview questions and answers. Covers a wide range of topics including algorithms, data structures, and language-specific concepts.',
+      link: 'https://github.com/sudheerj/javascript-interview-questions',
+    },
+    {
+      id: 9,
+      website: 'github.com/learning-zone/nodejs-basics',
+      title: 'HTML, CSS, JS, SQL, NODE.js, and MONGDB Interview Questions & Answers (Basics)',
+      description: 'A curated list of front-end interview questions and answers. Covers topics like HTML, CSS, JavaScript, and front-end frameworks.',
+      link: "github.com/learning-zone/nodejs-basics"
+    },
+    {
+      id: 10,
+      website: 'github.com/shubhdhungana/mern-interview-sets-pdf/blob/main/README.md',
+      title: 'MERN Interview Sets PDF',
+      description: 'This repository contains a curated collection of MERN Stack Full Stack Interview Questions and Answers in PDF format. ',
+      link: "https://github.com/shubhdhungana/mern-interview-sets-pdf/blob/main/README.md"
+    }
+  ]
+
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-8">Top Free Resources for Tech Learning</h1>
@@ -169,6 +242,32 @@ const Career = () => {
           ))}
         </div>
       </section>
+
+      {/* Interview Preparation Resources */}
+      <section className="mt-12">
+        <h2 className="text-2xl font-semibold mb-6 flex items-center">
+          <span className="mr-2">🚀</span> InterView Preparation
+        </h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {interviewPrep.map((tool) => (
+            <div key={tool.id} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg font-semibold mb-2">
+                <a 
+                  href={`https://${tool.website}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800"
+                >
+                  {tool.title}
+                </a>
+              </h3>
+              <div className="text-sm text-gray-600 mb-3">{tool.focusArea}</div>
+              <p className="text-gray-700">{renderDescription(tool.description)}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
     </div>
   )
 }
